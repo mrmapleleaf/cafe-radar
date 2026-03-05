@@ -85,7 +85,8 @@
       <section class="flex items-center justify-center">
         <button
           class="cursor-pointer border border-gray-300 px-4 py-2 rounded hover:bg-gray-100 active:bg-gray-200 w-104 h-14"
-          @click="isModalOpen = true"
+          @click="fetchCafeData()"
+          :disabled="isLoading"
         >ココイケ</button>
       </section>
       <div class="flex items-center justify-center mt-6">
@@ -93,6 +94,7 @@
       </div>
     </div>
   </div>
+  <LoadingOverlay :is-loading="isLoading" />
   <CafeModal :is-open="isModalOpen" @close="isModalOpen = false" />
 
 </template>
@@ -100,10 +102,12 @@
 <script setup lang="js">
 import { ref } from 'vue'
 import CafeModal from '~/components/CafeModal.vue'
+import LoadingOverlay from '~/components/LoadingOverlay.vue'
 
 const isModalOpen = ref(false)
 const isInputVisible = ref(false)
 const selectedRange = ref(1)
+const isLoading = ref(false)
 
 // 駅名入力の表示・非表示を切り替える関数
 function activateStationInput(flg) {
@@ -115,6 +119,15 @@ function activateStationInput(flg) {
 function activateRangeButton(index) {
   selectedRange.value = index
   console.log('Selected range index:', index)
+}
+
+async function fetchCafeData() {
+  console.log('Fetching cafe data...')
+  isLoading.value = true
+  await $fetch('/api/getCafe').then(() => {
+    isLoading.value = false
+    isModalOpen.value = true
+  })
 }
 
 </script>

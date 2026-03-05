@@ -19,7 +19,8 @@
       </button>
 
       <h2 class="text-xl font-bold text-center mb-4">おすすめのカフェ</h2>
-
+      
+      <!-- カフェ情報 -->
       <div class="flex flex-col gap-4">
         <div class="border border-gray-200 rounded-xl p-4">
           <p class="font-semibold">カフェ名がここに表示されます</p>
