@@ -1,7 +1,7 @@
 <template>
   <div class="flex rounded-2xl shadow-xl p-8">
     <div class="flex flex-col gap-6 mt-6">
-      <h1 class="flex items-center justify-center">ココイケ</h1>
+      <h1 class="flex items-center justify-center">☕️ココイケ</h1>
       <section>
         <div class="pb-2">
           <label class="text-xs">どこから探す</label>
